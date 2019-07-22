@@ -1,0 +1,14 @@
+#!/Users/shoji/.pyenv/versions/3.7.2/bin/python3
+"""
+    Given a valid (IPv4) IP address, return a defanged version of that IP address.
+    A defanged IP address replaces every period "." with "[.]".
+"""
+
+def defang_ipaddress(address: str) -> str:
+    return address.replace('.', '[.]')
+
+ex1 = '1.1.1.1'
+ex2 = '255.1.1.0'
+
+print(defang_ipaddress(ex1))
+print(defang_ipaddress(ex2))
