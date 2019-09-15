@@ -41,6 +41,11 @@ def two_sum(nums, target):
         else:
             h[i] = count
 
+""" Notes:
+    * Use in instead of fetching dictionary
+    * Hash is very reliable in most, think of ways to use hash before moving on
+    * look for ways to one pass by spotting DRY
+"""
 
 print(two_sum([1,2,3, 10], 12))
 print(two_sum([3,1,13, 10], 16))
