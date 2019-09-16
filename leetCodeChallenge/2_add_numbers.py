@@ -22,7 +22,7 @@ def addTwoNumbers(l1: ListNode, l2: ListNode) -> ListNode:
     # .#  store the result in a new node + carry
     # .# .modulo and get the carry if any
     # # if only one of the LL is empty then add the remaining LL to the ret and return
-    
+    """
     carry = 0
     l1_cur = l1
     l2_cur = l2
@@ -61,10 +61,37 @@ def addTwoNumbers(l1: ListNode, l2: ListNode) -> ListNode:
             if carry:
                 prev.next = ListNode(carry)
     return l1
+    """
+    c = 0
+    ret = cur = ListNode(0)
 
-root1 = ListNode(5)
-root2 = ListNode(5)
+    while l1 or l2 or c:
+        if l1:
+            c += l1.val
+            l1 = l1.next
+        if l2:
+            c += l2.val
+            l2 = l2.next
+        cur.next = ListNode(c % 10)
+        cur = cur.next
+        c //= 10
+
+    return ret.next
+    
+root1 = ListNode(9)
+root2 = ListNode(9)
+root2.next = ListNode(9)
 ret = addTwoNumbers(root1, root2)
 while ret:
     print(ret.val)
     ret = ret.next
+
+"""
+Notes:
+    * The issue with my first attempt was that I was trying to modify one of the LL
+    * Creating a new Node is easier because the process is the same no matter
+    the length of the ll
+"""
+
+
+
