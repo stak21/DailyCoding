@@ -12,4 +12,18 @@
 
 # Naive approach
 def is_anagram(word, words):
-    
+    matchings = {}
+    for w in words:
+        sorted_word = ''.join(sorted(w))
+        if sorted_word in matchings:
+             matchings[sorted_word].append(w)
+        else:
+            matchings[sorted_word] = [w]
+    sorted_word = ''.join(sorted(word))
+    return matchings.get(sorted_word, [])
+
+tests = [('a', ['a', 'b', 'ab']), ('aba', ['aab', 'baa', 'abb']), ('ab', ['a'])]
+answers = [['a'], ['aab', 'baa'], []]
+for test, answer in zip(tests, answers):
+    res = is_anagram(test[0], test[1])
+    print(res, 'Success: ', res == answer)
