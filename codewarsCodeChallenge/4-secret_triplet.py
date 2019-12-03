@@ -1,3 +1,9 @@
+# Result - 12/2/19 11:13 pm
+# Failed to understand the question
+# It asked to return the secret string using the triplets that were taken from the string
+# not return a triplet
+
+
 # Requirements:
 #   The secret string to return is the first sequence 
 #   Need to iterate through the entire string because the last character could make the shortest secret string
