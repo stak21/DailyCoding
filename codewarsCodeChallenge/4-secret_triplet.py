@@ -25,4 +25,26 @@
 def secret_triplet(secret, triplets):
     # Return the secret string
     # approach one:
+    triplet_index = 0
+    final_list = triplets
+    for c in secret:
+        filtered_list = [triplet for triplet in triplets if triplet[triplet_index] == c]
+        if len(filtered_list) == 1:
+            return filtered_list[0]
+        if len(filtered_list) > 1:
+            final_list = filtered_list
+            triplet_index += 1
+
     
+tests = [
+    ('hello', ['hel', 'ell']),
+    ('hello', ['elo', 'ell']),
+    ('hello', ['hlo', 'ell']),
+    ('hello', ['hel', 'hll', 'hlo']),
+    ('hello', ['ell', 'elo', 'llo'])
+]
+answers = ['hel', 'ell', 'hlo', 'hel', 'ell']
+for test, answer in zip(tests, answers):
+    res = secret_triplet(test[0], test[1])
+    print(res, 'Success: ', res == answer)
+
