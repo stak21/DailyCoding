@@ -1,3 +1,11 @@
+# Attempt 2 - 12/3/19 11:21 pm
+# Requirements:
+# Input:
+# Output:
+
+
+
+
 # Result - 12/2/19 11:13 pm
 # Failed to understand the question
 # It asked to return the secret string using the triplets that were taken from the string
