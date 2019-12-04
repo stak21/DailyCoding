@@ -1,7 +1,47 @@
 # Attempt 2 - 12/3/19 11:21 pm
+#   Failed - 12:01 pm
 # Requirements:
+#   Given a an array of triplets, find the secret word. These triplets are from the secret word and for each triplet they are a sequence that comes after another
+#   Will have to iterate through the whole array
 # Input:
-# Output:
+#    ['sec', 'eet', 'cet', 'srt', 'ret'] -> 'secret'
+#   secret = "whatisup"
+# triplets = [
+#   ['t','u','p'],
+#   ['w','h','i'],
+#   ['t','s','u'],
+#   ['a','t','s'],
+#   ['h','a','p'],
+#   ['t','i','s'],
+#   ['w','h','s']
+# ]
+# Process: 
+#   thoughts:  
+#       so looking at the triplets, all the letters in index 1 cannot be the first letter
+#       I was thinking we can try to find the sequence by taking each letter in the 0th index and the letter that is not in the 1st index is the first character
+#       but it is difficult to get the next
+#       |     [twah]    |    [htausi]    |   [pius]
+#       ---------------------------------------
+#               w                   hta            pius
+   
+#       |     [tah]    |    [htausi]    |   [pius]
+#       ---------------------------------------
+#   approach 1:
+#       use a tree, the parent node is the first letters
+#           w - h - a - t - i - s - u - p
+#       or a dict
+# {t: {a}}
+# {u: {t}}
+# {p: {h}}
+# {w: {}}
+# {h: {w}}
+# {i: {t}}
+# {t: {a}}
+# {s: {i}}
+# {u: {s}}
+# {a: {h}}
+# Trying to use a nested structure, but failed
+#           
 
 
 
