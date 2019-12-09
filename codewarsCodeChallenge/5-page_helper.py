@@ -17,3 +17,28 @@
 # helper.page_index(-10) # should == -1 because negative indexes are invalid
 
 # Process:
+# create a class that has 
+#   attributes: 
+#       page_count,:
+#           set to length of the array / the items per page
+#       item_count:
+#           set to length of array
+#       _page_cap:
+#           set to iterms per page
+#   instance:
+#       page_item_count(page)
+#           returns the number of items on the given page
+#           if 0 > page > page_count, return -1
+#           if page == page_count, return length of item_count % _page_cap
+#           else  every page is filled, so return _page_cap
+#       page_index(index)
+#           returns the page of the given index
+#           if 0 > index > item_count, return -1
+#           return index // page_cap
+#           page max    |   index       | page
+#   ----------------------------------------
+#               4           |       2           |      0
+#               4           |       5           |       1
+#           2 / 4 == 0
+#           5 / 4 == 1
+#           8 / 4 == 2
