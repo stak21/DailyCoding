@@ -1,3 +1,37 @@
+# Failure
+# TODO: complete this class
+# import math
+
+# class PaginationHelper:
+  
+#     def __init__(self, arr, page_cap):
+#         if not arr:
+#             return None
+#         item_count = len(arr)
+#         self._item_count = item_count
+#         self._page_count = max(int(math.ceil(float(item_count) / page_cap)), 1)
+#         self._page_cap = page_cap
+    
+#     def page_count(self):
+#         return self._page_count
+      
+#     def item_count(self):
+#         return self._item_count
+        
+#     def page_item_count(self, page):
+#         if page < 0 or  page > self.page_count() - 1:
+#             return -1
+#         if page == self.page_count() - 1:
+#             count =  self.item_count() % self._page_cap
+#             if count > 0:
+#                 return count
+#         return self._page_cap
+    
+#     def page_index(self, index):
+#         if index < 0 or index > self.item_count() - 1:
+#             return -1
+#         return index // self._page_cap
+
 import math
 
 # Requirements: 
