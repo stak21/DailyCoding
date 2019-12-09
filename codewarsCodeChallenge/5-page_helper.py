@@ -28,7 +28,7 @@
 #   instance:
 #       page_item_count(page)
 #           returns the number of items on the given page
-#           if 0 > page > page_count, return -1
+#           if  page  < 0 or page > page_count, return -1
 #           if page == page_count, return length of item_count % _page_cap
 #           else  every page is filled, so return _page_cap
 #       page_index(index)
@@ -42,3 +42,23 @@
 #           2 / 4 == 0
 #           5 / 4 == 1
 #           8 / 4 == 2
+
+class PaginationHelper:
+    def __init__(self, arr, page_cap):
+        item_count = len(arr)
+        self.item_count = item_count
+        self.page_count = item_count // page_cap
+        self._page_cap = page_cap
+    
+    def page_item_count(self, page):
+        if page < 0 or  page > self.page_count:
+            return -1
+        if page == page_count:
+            return self.item_count % self._page_cap
+        return self._page_cap
+    
+    def page_index(self, index):
+        if index < 0 or index > self.item_count:
+            return -1
+        return index // self._page_cap
+
