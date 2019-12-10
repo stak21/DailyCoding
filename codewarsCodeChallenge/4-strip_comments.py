@@ -15,33 +15,40 @@
 #           continue from the newline and repeat
 
 def strip_comments(string, comments):
-    start = 0
+    start = end = 0
     return_string = []
     stripping = False
     for index, c in enumerate(string):
         if c in comments and stripping is False:
-            return_string.append(string[start:index])
-            stripping = True
+            return_string.append(string[start:end])
             continue
-        if c == '\n' and stripping is True:
-            # splice
-            start = index
+        if c == '\n':
+            if stripping is False:
+                return_string.append(string[start:end])
+            start =  index
             stripping = False
+        end = index
 
     if stripping is False:
-        return_string.append(string[start:])
-    return ' '.join(return_string).strip(' ')
+        return_string.append(string[start:end])
+    return ''.join(return_string)
 
 tests = [
-    '1hello there',
+    '1hello there', 
      '2hello # there', 
      '3hello there   ', 
      '4hello there    #   ', 
      '5hello # hide \n show and then ! hide this \n but show this', 
      '6hello \n show',
-      '7hello there \n #hide'
+      '7hello there \n #hide',
+      '8     \n hello'
       ]
-answers = ['1hello there', '2hello', '3hello there', '4hello there', '5helllo \n show and then \n but show this', '6hello \n show', '7hello there \n']
+answers = [
+    '1hello there', '2hello', '3hello there', '4hello there', 
+    '5helllo\n show and then\n but show this',
+     '6hello\n show', '7hello there\n',
+     '8\n hello',
+     ]
 
 for test, answer in zip(tests, answers):
     res = strip_comments(test, ['#', '!'])
