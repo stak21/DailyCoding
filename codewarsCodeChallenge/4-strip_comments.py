@@ -29,8 +29,20 @@ def strip_comments(string, comments):
             stripping = False
 
     if stripping is False:
-        return_string.append(string[start:].strip(' '))
-    return ' '.join(return_string)
+        return_string.append(string[start:])
+    return ' '.join(return_string).strip(' ')
 
-test = 'string is # live'
-print(strip_comments(test, ['#']))
+tests = [
+    '1hello there',
+     '2hello # there', 
+     '3hello there   ', 
+     '4hello there    #   ', 
+     '5hello # hide \n show and then ! hide this \n but show this', 
+     '6hello \n show',
+      '7hello there \n #hide'
+      ]
+answers = ['1hello there', '2hello', '3hello there', '4hello there', '5helllo \n show and then \n but show this', '6hello \n show', '7hello there \n']
+
+for test, answer in zip(tests, answers):
+    res = strip_comments(test, ['#', '!'])
+    print(res, 'Success: ', res == answer)
