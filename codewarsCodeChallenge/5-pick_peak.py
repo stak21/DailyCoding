@@ -30,3 +30,43 @@ Have fun!
 #           if it is a plataeu, then move the third pointer up until it hits either a higher peak or lower number, which in that case it is a peak and add the 2 pointer index
 #           at the end of the plataeu, move the 1st pointer down to the end
 
+def pick_peak(arr):
+    def check_plataeu(m, right, arr):
+        for idx, val in enumerate(arr[right:]):
+            if val < m:
+                return (True, idx)
+            if val > m:
+                return (False, idx)
+        return (False, idx)
+
+    def add_peak(pos, peak, ret):
+        ret['pos'].append(pos)
+        ret['peaks'].append(peak)
+
+    arr_len = len(arr)
+    ret_peaks = {pos:[], peaks:[]}
+    if arr_len < 3:
+        return ret_peaks
+    left, middle, right = 0, 1, 2
+    while(right <= arr_len):
+    l = arr[left]
+    m = arr[middle]
+    r = arr[right]
+    if l < m > r:
+        add_peak(middle, m, ret_peaks)
+    if m == r:
+        peak, idx = check_plataeu(m, right, arr)
+        if peak:
+            add_peak(middle, m, ret_peaks)
+        left = idx
+        middle = idx + 1
+        right = idx + 2
+        continue
+    left += 1
+    middle += 1
+    right += 1
+
+
+
+
+        
