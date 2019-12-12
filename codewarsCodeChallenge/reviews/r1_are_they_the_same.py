@@ -14,3 +14,14 @@ def same(a1, a2):
         if e ** 2 not in unique:
             return False
     return True
+
+tests = [
+    ([2, 4, 6], [4, 16, 36]),
+     ([1, 2], [1]),
+     ([2, 4], [4, 15]),
+     ([2, 2], [4, 4])
+     ]
+answers = [True, False, False, True]
+for test, answers in zip(tests, answers): 
+    res = same(test[0], test[1])
+    print(res, "success: ", res == answer)
