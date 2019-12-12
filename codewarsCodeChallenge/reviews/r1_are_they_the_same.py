@@ -1,3 +1,4 @@
+# Success: 12/11/19 11:56 PM
 # Requirements: Return if the two arrays are "same"
 #       the second array should have all the squared numbers on the right
 #   I/O: [2,4], [4, 16] => True
@@ -22,6 +23,6 @@ tests = [
      ([2, 2], [4, 4])
      ]
 answers = [True, False, False, True]
-for test, answers in zip(tests, answers): 
+for test, answer in zip(tests, answers): 
     res = same(test[0], test[1])
     print(res, "success: ", res == answer)
