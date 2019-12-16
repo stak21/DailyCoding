@@ -25,3 +25,20 @@ i# Requirements:
 
 # iterate through the entire list and use the outlier to find the number
 
+def outlier(arr):
+    outlier = [n for n in arr[:3] if n % 2 == 0]
+    length = len(outlier)
+    if length == 1:
+        return outlier[0]
+    if length > 2:
+        outlier = 0
+    if length == 0:
+        outlier = 2
+    for n in arr:
+        if outlier:
+            if n % 2 == 0:
+                return n
+        else:
+            if n % 2 != 0:
+                return n
+    return 0
