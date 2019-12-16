@@ -24,57 +24,52 @@ def isSolved(board):
 
     def readHorizontal(arr):
         if 0 in arr:
-            return 0
+            return -1
         sums= sum(arr)
         if sums == 3:
             return 1
         if sums == 6:
             return 2
+        return 0
 
     def readVertical(board):
         for i in range(3):
             # checks 1
-            if 0 in [board[0][i], board[1[]i], board[2][i]]:
-                return 0
+            if 0 in [board[0][i], board[1][i], board[2][i]]:
+                return -1
             sums = board[0][i] + board[1][i] + board[2][i]
             if sums == 3:
                 return 1
             if sums == 6:
                 return 2
+        return 0
     def readDiagonal(board):
-        if 0 in [board[0][0], board[1][1], board[2][2]] or 0 in [board[0][2], board[1][1], board[2][0]]:
-            return 0
-        sum1 =  sum([board[0][0], board[1][1], board[2][2]] )
+        if 0 in [board[0][0], board[1][1], board[2][2]] and 0 in [board[0][2], board[1][1], board[2][0]]:
+            return -1
+        sum1 =  sum([board[0][0], board[1][1], board[2][2]])
         sum2 = sum([board[0][2], board[1][1], board[2][0]])
         if sum1 == 3 or sum2 == 3:
             return 1
         if sum1 == 6 or sum2 == 6:
             return 2
-
+        return 0
     total = 0
-    for row in arr:
-        res = readHorizontal(arr)
+    # check horizontal
+    for row in board:
+        res = readHorizontal(row)
         total += res
-        if res:
+        if res > 0:
             return res
     # check vertical
     res = readVertical(board)
     total += res
-    if res:
+    if res > 0:
         return res
     # check diagonal
     res = readDiagonal(board)
     total += res
-    if res:
+    if res > 0 :
         return res
     if total < 0:
         return -1
     return 0
-
-    
-    
-
-
-        
-
-            
