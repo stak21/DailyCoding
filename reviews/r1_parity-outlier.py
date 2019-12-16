@@ -1,4 +1,5 @@
 # Review 1: 12/16/19 8:45
+#   Success: 12/16/19 9:22  872 ms
 i# Requirements: 
 #   Return the odd number out given a list of atleast three integers.
 #       There will always be atleast one number that is different
@@ -30,7 +31,7 @@ def outlier(arr):
     length = len(outlier)
     if length == 1:
         return outlier[0]
-    if length > 2:
+    if length > 1:
         outlier = 0
     if length == 0:
         outlier = 2
@@ -39,6 +40,6 @@ def outlier(arr):
             if n % 2 == 0:
                 return n
         else:
-            if n % 2 != 0:
+            if n and  n % 2 != 0:
                 return n
     return 0
