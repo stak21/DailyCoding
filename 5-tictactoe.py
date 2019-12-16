@@ -1,3 +1,4 @@
+# Success: 12/15/19 11:49 886ms
 def isSolved(board):
     # Requirements:
     #   Return the result of the tictactoe board
