@@ -1,4 +1,7 @@
 # Started: 12/17/19 10:56 PM
+# Personal test: success 11:22 PM
+# Test failed due to too big of a number
+
 
 #   Requirements:
 #   Given a list of names in a queue, each name that gets popped returns to the queue, but as two. Return the name of the nth person that gets popped
@@ -16,14 +19,22 @@
 #                   each pass through, it will pop the first item and add 2 to the end
 #                   once it reaches 0, return the name at the end
 
+
 def who_is_next(names, r):
-    if not names:
-        return None
-    if r <= 1:
-        return  names[0]
-    name = names.pop(0)
-    names.extend([name] * 2)
-    return who_is_next(names, r - 1)
+    round = count = 0
+    length = len(names)
+    if length <= r:
+        return names[r]
+    for i in range(1, r):
+        if count == length:
+            count = 1
+            length *= 2
+        count += 1
+    print(count, length, len(names))
+    print(count // (length//len(names)))
+    return names[count // (length // len(names))]
+
+        
 
 tests = [
     (['shoji'], 1),
