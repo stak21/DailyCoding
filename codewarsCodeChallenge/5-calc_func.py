@@ -12,4 +12,9 @@
 #   zero(divided_by(five())) => 0
 #   five(divided_by(zero())) => error
 #  Process:
-#   So if the number 
+#   So if the number  is the left operand, then it should expect the operator function
+#       It should pass its own number into the function and return the whole thing
+#   The operator should expect a number function
+#       the operator will call the number function and do the operator on the passed in number and the returned number frmo the number function and return it
+#   if the number function is the right operand, then it should not expect anything and return the number
+
