@@ -2,6 +2,8 @@
 
 # 11:18 PM Attemp1
 
+# 11:40 PM Success on personal tests
+
 # Requirements:
 #   Given a string of text, return the top three most frequent words
 #   matched words are case-insensitive
@@ -25,7 +27,7 @@ def top_3_words(text):
 
     def is_word(string):
         for c in string:
-            if not c.isalpha() or not '\'':
+            if not c.isalpha() and c is not '\'':
                 return False
         return True
 
@@ -37,13 +39,12 @@ def top_3_words(text):
             if word in cache:
                 cache[word] +=1
             else:
-                cache[word = 1]
-    counts = cache.items
-    counts.sort(lambda x: x[1])
-    return counts[:3]
+                cache[word ]= 1
+    sorted_words = [word for word, count in sorted(cache.items(), key=lambda item: item[1], reverse=True)]
+    return sorted_words[:3]
 
-  tests = ['Hello there I', 'hello, I am hello be I want am hello', 'I can\'t hear you, but I can\'t hear']
-  answers = [['hello', 'there', 'i'], ['hello', 'i', 'am'], ['can\'t', 'i', 'hear'] ]
+tests = ['Hello there I', 'hello hello, I am hello i be I want am hello', 'I can\'t hear you, but I can\'t hear can\'t']
+answers = [['hello', 'there', 'i'], ['hello', 'i', 'am'], ['can\'t', 'i', 'hear'] ]
 
 for test, answer in zip(tests, answers):
     res = top_3_words(test)
