@@ -26,16 +26,36 @@
 def top_3_words(text):
 
     def is_word(string):
+        if not string:
+            return False
+        if len(string) == 1 and string == '\'':
+            return False
+        if '\'\'' in string:
+            return False
         for c in string:
             if not c.isalpha() and c is not '\'':
                 return False
         return True
 
-    parsed = text.split(' ')
+    def word_tok(text):
+        tok = []
+        start = 0
+        is_word = False
+        for index, c in enumerate(text):
+            if not is_word and c.isalpha() or not is_word and c is '\'':
+                start = index
+                is_word = True
+            if is_word and not c.isalpha() and c is not '\'':
+                tok.append(text[start:index])
+                is_word = False
+        tok.append(text[start:])
+        return tok
+    parsed = word_tok(text)
     cache = {}
     for word in parsed:
         word = word.lower()
         if is_word(word):
+            print(word)
             if word in cache:
                 cache[word] +=1
             else:
