@@ -2,7 +2,10 @@
 # Review 2
 
 # 9:46
-# Personal Test Attempt 1
+# Personal Test Attempt 1 Success
+# Personal Test Attempt 2 Success
+# 9:55 21 Minutes
+# codewars Success
 
 
 # Requirements:
@@ -30,8 +33,8 @@ def valid_parenthesis(s):
         return False
     return True
 
-tests = ['()', '(()())', ')(', '(hello)', 'h(ell)o']
-answers = [True, True, False, True, True]
+tests = ['()', '(()())', ')(', '(hello)', 'h(ell)o', "()", "()()", "(())", ")", "())", "((()", ""]
+answers = [True, True, False, True, True,  True, True, True, False, False, False, True]
 
 for test, answer in zip(tests, answers):
     res = valid_parenthesis(test)
