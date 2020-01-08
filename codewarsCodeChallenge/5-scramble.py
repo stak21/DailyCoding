@@ -1,6 +1,8 @@
 # 1/7/20 11:00 PM scramble
 
 # 11:06 - Prep finished
+# 11:11 - Finished attempt
+# Test phase
 
 # Requirements:
 #   Given 2 strings, return true if the letters of one string can creat the second string
@@ -19,4 +21,27 @@
 #      remove it
 
 def scramble(str1, str2):
-    
+    mappings = {}
+
+    if len(str1) < len(str2):
+        return False
+    for c in str1:
+        if c in mappings:
+            mapping[c] += 1
+        else:
+            mappings[c] = 1
+    for c in str2:
+        if c not in mappings:
+            return False
+        mappings[c] -= 1
+        if mappings[c] == 0:
+            mappings.remove(c)
+
+tests = [ ('ahello', 'hello'),  ('ahell', 'hello'), ('heal', 'a')]
+answers = [True, False, True]
+
+for test, answer in zip(tests, answers):
+    res = scramble(test[0], test[1])
+    print(res, 'Success: ', res == answer)
+    if res != answer:
+        print('Expected', answer)
