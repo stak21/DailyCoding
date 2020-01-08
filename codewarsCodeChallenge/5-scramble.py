@@ -4,6 +4,9 @@
 # 11:11 - Finished attempt
 # Test phase 
 # 11:15PM PTA Success
+# 11:20 PM codewars attempt Failed. Took too long
+
+# Ideas - Search for the characters in str 2 while creating the mappings
 
 # Requirements:
 #   Given 2 strings, return true if the letters of one string can creat the second string
