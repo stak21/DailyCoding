@@ -6,6 +6,7 @@
 # 11:15PM PTA Success
 # 11:20 PM codewars attempt Failed. Took too long
 # 11:26 PM Attempt 2
+# 11:28 PM PTA2 Success
 
 # Ideas - Search for the characters in str 2 while creating the mappings
 
@@ -31,19 +32,19 @@ def scramble(str1, str2):
     if len(str1) < len(str2):
         return False
     for c in str1:
-        s2 = str[idx]
+        s2 = str2[idx]
         if c in mappings:
             mappings[c] += 1
         else:
             mappings[c] = 1
-        if str2[idx] in mappings:
+        if s2 in mappings:
             mappings[s2] -= 1
             if mappings[s2] == 0:
                 mappings.pop(c)
             idx += 1
             if idx >= len(str2):
                 return True
-    return True
+    return False
 
 tests = [ ('ahello', 'hello'),  ('ahell', 'hello'), ('heal', 'a')]
 answers = [True, False, True]
