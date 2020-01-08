@@ -2,7 +2,8 @@
 
 # 11:06 - Prep finished
 # 11:11 - Finished attempt
-# Test phase
+# Test phase 
+# 11:15PM PTA Success
 
 # Requirements:
 #   Given 2 strings, return true if the letters of one string can creat the second string
@@ -27,7 +28,7 @@ def scramble(str1, str2):
         return False
     for c in str1:
         if c in mappings:
-            mapping[c] += 1
+            mappings[c] += 1
         else:
             mappings[c] = 1
     for c in str2:
@@ -35,7 +36,8 @@ def scramble(str1, str2):
             return False
         mappings[c] -= 1
         if mappings[c] == 0:
-            mappings.remove(c)
+            mappings.pop(c)
+    return True
 
 tests = [ ('ahello', 'hello'),  ('ahell', 'hello'), ('heal', 'a')]
 answers = [True, False, True]
