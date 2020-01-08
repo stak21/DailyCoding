@@ -7,8 +7,22 @@
 # 11:20 PM codewars attempt Failed. Took too long
 # 11:26 PM Attempt 2
 # 11:28 PM PTA2 Success
+# 11:35 PM codewars attempt Failed. Took too long
 
 # Ideas - Search for the characters in str 2 while creating the mappings
+# ideas - sort both strings
+#       start from the last character of str 2
+#       check the last chracter of str 1 and if str 1 is < str 2 return False
+#       create a binary search function
+#       takes in a character and a string,
+#           checks the middle of the string 
+#               if the character is smaller than the middle
+#                   check the shorter side
+#       return the index of the found string
+#       if not found, return False
+#      if found, cut the index of str1 to the returned index
+#   
+#       
 
 # Requirements:
 #   Given 2 strings, return true if the letters of one string can creat the second string
@@ -27,24 +41,26 @@
 #      remove it
 
 def scramble(str1, str2):
-    mappings = {}
-    idx = 0
-    if len(str1) < len(str2):
-        return False
-    for c in str1:
-        s2 = str2[idx]
-        if c in mappings:
-            mappings[c] += 1
+    def bsearch(c, string):
+        middle = len(string) // 2
+        if middle == 0 and c != string[middle]:
+            return False
+        if c == string[middle]:
+            return middle
+        if c < string[middle]:
+            return bsearch(c, string[:middle])
         else:
-            mappings[c] = 1
-        if s2 in mappings:
-            mappings[s2] -= 1
-            if mappings[s2] == 0:
-                mappings.pop(c)
-            idx += 1
-            if idx >= len(str2):
-                return True
-    return False
+            return bsearch(c, string[middle:])
+    idx = 0
+    sorted_s1 = sorted(str1)
+    for c in sorted(str2):
+        idx = bsearch(c, sorted_s1)
+        print('idx: ', idx)
+        if not idx:
+            return False
+    return True
+            
+
 
 tests = [ ('ahello', 'hello'),  ('ahell', 'hello'), ('heal', 'a')]
 answers = [True, False, True]
